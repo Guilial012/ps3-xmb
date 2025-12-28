@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    background: #000;
+    overflow: hidden;
+}
+
+/* Fundo estilo XMB */
+.xmb_background {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        #0a0f1f 0%,
+        #05070f 60%,
+        #000000 100%
+    );
+    z-index: -3;
+}
+
+/* Glow suave animado */
+.xmb_background::before,
+.xmb_background::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,0.06),
+    transparent 65%
+  );
+  filter: blur(40px);
+  animation: wave 70s linear infinite;
+}
+
+.xmb_background::after {
+  animation-duration: 110s;
+  opacity: 0.6;
+}
+
+/* Movimento muito sutil */
+@keyframes wave {
+  0%   { transform: translateX(-4%) scale(1); }
+  50%  { transform: translateX(4%) scale(1.03); }
+  100% { transform: translateX(-4%) scale(1); }
+}
+
+/* Container no canto superior direito */
+.barra_superior_direita {
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Ícones */
+.status_icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    opacity: 0.8;
+    transform: translateY(1px);
+}
+
+/* Agrupamento do ícone do usuário com o contador */
+.user_status {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Número de amigos */
+.count {
+    font-size: 0.85rem;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    opacity: 0.8;
+}
